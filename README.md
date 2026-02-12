@@ -1,34 +1,34 @@
 # Jared Edgerton
 
-This repository hosts my personal academic website, built using **GitHub Pages**.
+This repository hosts a personal academic website built using **GitHub Pages**.
 
-The site is available at:  
-👉 https://jfedgerton.github.io
+## Current site structure
 
----
-
-## About
-
-I am an Assistant Professor of Political Science and Data Science.  
-My research focuses on international security, political violence, networks, and computational social science, with applications in deep learning, artificial intelligence, network analysis, and text analysis. I have a substantive interest in conflict processes and interantional security, but collaborate widely with ongoing projects analyzing American political media, supply chain disruptions, aid distrribution, and human rights proliferation, among other areas of study,.
-
-This site replaces my former Squarespace website and is fully hosted on GitHub.
-
----
-
-## Curriculum Vitae
-
-- **[Download CV (PDF)](cv/CV.pdf)**
-
-The PDF link is stable and intended for sharing.
-
----
-
-## Repository Structure
+The site is now scaffolded as a multi-page static website with shared styling and navigation:
 
 ```text
 .
-├── index.html        # Homepage
+├── index.html          # Homepage
+├── research.html       # Research overview
+├── projects.html       # Projects page
+├── teaching.html       # Teaching page
+├── cv.html             # CV download page
+├── contact.html        # Contact page
+├── assets/
+│   ├── styles.css      # Shared styles
+│   └── site.js         # Small shared behavior (footer year)
 ├── cv/
-│   └── CV.pdf        # Public CV (stable filename)
-└── README.md         # This file
+│   └── CV.pdf          # Public CV (stable filename)
+└── README.md
+```
+
+## Notes
+
+- Navigation links are wired across all pages.
+- `cv/CV.pdf` remains the stable URL target for CV sharing.
+- Page content currently uses placeholders in a few sections so you can quickly swap in polished copy from your existing site.
+
+
+## Content migration helper
+
+- Start with `content-inventory.md` to review and correct known profile details before finalizing page copy.
