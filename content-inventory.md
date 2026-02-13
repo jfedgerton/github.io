@@ -56,6 +56,7 @@ Please mark each item as ✅ (correct), ✏️ (edit), or ➕ (add):
 5. Office location / mailing address.
 6. For each project above: one-line summary + external/internal link.
 7. For each teaching item: add exact course title formatting, term/year taught, and optional syllabus link.
+7. Teaching list for `teaching.html` (course title, level, term/year, optional syllabus links).
 8. Optional external links to include:
    - Google Scholar
    - ORCID
@@ -71,3 +72,5 @@ Please mark each item as ✅ (correct), ✏️ (edit), or ➕ (add):
 4. Add term-by-term teaching table once terms are confirmed.
 5. Add CV file and confirm `cv/CV.pdf` downloads correctly.
 6. Final polish pass (typography, accessibility, mobile layout).
+4. Add CV file and confirm `cv/CV.pdf` downloads correctly.
+5. Final polish pass (typography, accessibility, mobile layout).
