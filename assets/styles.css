@@ -1,11 +1,12 @@
 :root {
-  --bg: #f8fafc;
+  --bg: #f5f7fb;
   --text: #0f172a;
   --muted: #475569;
   --card: #ffffff;
-  --border: #e2e8f0;
+  --border: #dbe3ef;
   --accent: #0f766e;
   --accent-contrast: #ffffff;
+  --accent-soft: #ccfbf1;
 }
 
 * {
@@ -14,23 +15,24 @@
 
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-    Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(circle at top, #eef6ff 0%, var(--bg) 35%, #f8fafc 100%);
   color: var(--text);
   line-height: 1.6;
 }
 
 .container {
-  width: min(100% - 2rem, 960px);
+  width: min(100% - 2rem, 980px);
   margin-inline: auto;
 }
 
 .site-header {
   border-bottom: 1px solid var(--border);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .nav-wrap {
@@ -44,7 +46,8 @@ body {
 .site-title {
   color: var(--text);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .nav-list {
@@ -62,6 +65,7 @@ body {
   color: var(--text);
   padding: 0.35rem 0.65rem;
   border-radius: 0.5rem;
+  transition: all 160ms ease;
 }
 
 .nav-list a:hover,
@@ -75,7 +79,21 @@ main {
 }
 
 .hero {
-  padding: 1rem 0 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: linear-gradient(155deg, #ffffff 0%, #f0fdfa 100%);
+  box-shadow: 0 14px 35px -28px rgba(15, 23, 42, 0.45);
+  margin-bottom: 2rem;
+}
+
+.kicker {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #0f766e;
+  margin: 0;
 }
 
 h1,
@@ -100,6 +118,7 @@ p {
   color: var(--accent-contrast);
   padding: 0.6rem 0.9rem;
   border-radius: 0.55rem;
+  font-weight: 600;
 }
 
 .button.secondary {
@@ -109,19 +128,28 @@ p {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
 
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
   padding: 1rem;
+  box-shadow: 0 10px 24px -24px rgba(2, 6, 23, 0.45);
+}
+
+.project-card {
+  border-top: 4px solid var(--accent);
 }
 
 .list-clean {
   padding-left: 1.1rem;
+}
+
+.compact li {
+  margin-bottom: 0.35rem;
 }
 
 .site-footer {
@@ -136,5 +164,10 @@ p {
     flex-direction: column;
     align-items: flex-start;
     padding: 0.75rem 0;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
