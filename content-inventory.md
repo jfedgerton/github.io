@@ -36,6 +36,15 @@ This file captures the information currently discoverable from the repository hi
 5. Aid Distribution
 6. Human Rights Proliferation
 
+## Teaching currently captured from user-provided list
+
+- International Conflict (undergraduate, UTD)
+- Introduction to International Relations (undergraduate, UTD)
+- Data Visualization (undergraduate, SoDA, Penn State)
+- PLSC 502 (graduate, Penn State)
+- PLSC Machine Learning (graduate, Penn State)
+- SoDA 501 (graduate, Penn State)
+
 ## Needs confirmation / correction
 
 Please mark each item as ✅ (correct), ✏️ (edit), or ➕ (add):
@@ -46,6 +55,7 @@ Please mark each item as ✅ (correct), ✏️ (edit), or ➕ (add):
 4. Contact email for public display.
 5. Office location / mailing address.
 6. For each project above: one-line summary + external/internal link.
+7. For each teaching item: add exact course title formatting, term/year taught, and optional syllabus link.
 7. Teaching list for `teaching.html` (course title, level, term/year, optional syllabus links).
 8. Optional external links to include:
    - Google Scholar
@@ -59,5 +69,8 @@ Please mark each item as ✅ (correct), ✏️ (edit), or ➕ (add):
 1. Confirm/correct this inventory.
 2. Replace placeholder project summaries with final titles + links.
 3. Expand research page with paper-level entries (published + working papers).
+4. Add term-by-term teaching table once terms are confirmed.
+5. Add CV file and confirm `cv/CV.pdf` downloads correctly.
+6. Final polish pass (typography, accessibility, mobile layout).
 4. Add CV file and confirm `cv/CV.pdf` downloads correctly.
 5. Final polish pass (typography, accessibility, mobile layout).
