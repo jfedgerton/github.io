@@ -3,107 +3,449 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects | Jared Edgerton</title>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Ongoing Projects Network | Jared Edgerton</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #1f2933;
+        --muted: #52606d;
+        --line: #d9e2ec;
+        --close: #2f4f4f;
+        --development: #6b7c93;
+        --early: #9aa5b1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+      }
+
+      h1,
+      h2 {
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: var(--muted);
+        max-width: 95ch;
+      }
+
+      .diagram-wrap {
+        margin-top: 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 1rem;
+        background: #fbfcfd;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+
+      .legend-swatch {
+        width: 0.95rem;
+        height: 0.95rem;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      #network {
+        width: 100%;
+        height: 720px;
+      }
+
+      .node-label {
+        fill: #243b53;
+        font-size: 0.72rem;
+        pointer-events: none;
+      }
+
+      .tooltip {
+        position: absolute;
+        max-width: 330px;
+        background: #ffffff;
+        border: 1px solid #bcccdc;
+        border-radius: 8px;
+        padding: 0.7rem 0.85rem;
+        font-size: 0.86rem;
+        color: #243b53;
+        box-shadow: 0 7px 20px rgba(16, 24, 40, 0.08);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.16s ease;
+      }
+
+      details {
+        margin-top: 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        background: #fbfcfd;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      pre {
+        margin: 0.8rem 0 0;
+        white-space: pre-wrap;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.84rem;
+        color: #334e68;
+      }
+
+      .helper-text {
+        font-size: 0.88rem;
+        color: #627d98;
+        margin-top: 0.35rem;
+        margin-bottom: 0.8rem;
+      }
+
+      @media (max-width: 900px) {
+        #network {
+          height: 600px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="site-title" href="index.html">Jared Edgerton</a>
-        <nav aria-label="Main navigation">
-          <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a class="active" href="projects.html">Projects</a></li>
-            <li><a href="teaching.html">Teaching</a></li>
-            <li><a href="cv.html">CV</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
     <main class="container">
-      <h1>Projects</h1>
+      <h1>Ongoing Projects</h1>
       <p>
-        Ongoing projects center on methodological innovation and practical research impact, combining computational tools
-        with substantive political science applications.
+        This diagram maps the structural relationships across my current research agenda and highlights how projects cluster
+        around recurring conceptual concerns. Each node corresponds to one project, organized by stage from early scoping
+        to near-submission completion. Edges represent shared conceptual or methodological foundations, indicating where
+        projects draw on related theories of power, information, and institutional change. The visualization is intended as
+        a compact overview of both substantive continuity and methodological integration across topics. Together, these
+        links show how individual studies contribute to a coherent, cumulative research program.
       </p>
 
-      <div class="card-grid project-grid">
-        <article class="card project-card">
-          <h2>Computational Methods for Political Science</h2>
-          <p>
-            Design and validation of end-to-end pipelines for text, event, and relational data. This project develops
-            reusable frameworks for measurement, model comparison, and transparent reporting in high-dimensional settings.
-          </p>
-          <ul class="list-clean compact">
-            <li><strong>Core methods:</strong> LLM-assisted coding, NLP, graph learning, uncertainty quantification.</li>
-            <li><strong>Current output:</strong> reproducible templates for collaborative political data analysis.</li>
-          </ul>
-        </article>
+      <section class="diagram-wrap" aria-label="Interactive project network diagram">
+        <div class="legend" aria-label="Legend for node colors by stage">
+          <span class="legend-item"><span class="legend-swatch" style="background: var(--close)"></span>Close to Submission</span>
+          <span class="legend-item"
+            ><span class="legend-swatch" style="background: var(--development)"></span>In Development</span
+          >
+          <span class="legend-item"><span class="legend-swatch" style="background: var(--early)"></span>Early Stages</span>
+        </div>
+        <div class="helper-text">Hover over any project node to view a short summary. Drag nodes to inspect thematic neighborhoods.</div>
+        <svg id="network" role="img" aria-label="Force-directed network of ongoing research projects"></svg>
+      </section>
 
-        <article class="card project-card">
-          <h2>Conflict and International Security Collaboration</h2>
-          <p>
-            Multi-institution collaboration studying escalation pathways, deterrence dynamics, and conflict signaling
-            under conditions of incomplete information. Emphasis is on integrating theory and empirical models.
-          </p>
-          <ul class="list-clean compact">
-            <li><strong>Data:</strong> event streams, strategic interactions, policy communication records.</li>
-            <li><strong>Research goal:</strong> improve forecasting and explanation of conflict behavior.</li>
-          </ul>
-        </article>
+      <details>
+        <summary>Plain Markdown Project List (Fallback)</summary>
+        <pre>
+### Close to Submission
+- Strategic Rebel Targeting (PSRM – Conditional Accept, Replication Check)
+- Interstate War as Relational–Material Joint Decision
+- Tariff Waivers and Supplier Network Reconfiguration
+- USAID Ecosystem of Aid and Network Fragmentation
+- Rwanda Gacaca Sentencing (Criminology R&amp;R)
+- ISIS Foreign Fighter Mobilization
+- Polarization in American Media on Gun Violence
+- Foreign Policy Media Framing in Podcasts (Alternative vs Mainstream)
 
-        <article class="card project-card">
-          <h2>American Political Media</h2>
-          <p>
-            Analysis of partisan framing, agenda-setting, and attention cycles across traditional and digital media.
-            The project examines how narrative structure influences public interpretation and elite behavior.
-          </p>
-          <ul class="list-clean compact">
-            <li><strong>Approach:</strong> topic modeling, semantic similarity, and networked discourse mapping.</li>
-            <li><strong>Substantive focus:</strong> polarization, credibility, and information asymmetries.</li>
-          </ul>
-        </article>
+### In Development
+- State–Rebel War Extension of the Relational Power Model
+- Agent-Based Model of Rebel Conflict Dynamics
+- Dynamic Multiplex GNN Forecasting of US–China Embeddedness
+- Temporal Community Detection Generalization (Louvain/Leiden Extension)
+- Tenet Media and Foreign Influence Networks
+- Estimating the Rate of Sexual Assault in Rwanda
+- Human Trafficking and Environmental Shock
 
-        <article class="card project-card">
-          <h2>Supply Chain Disruptions</h2>
-          <p>
-            Interdisciplinary work on how geopolitical shocks and conflict events propagate through supply networks.
-            The project links political risk to bottlenecks, resilience strategies, and policy response.
-          </p>
-          <ul class="list-clean compact">
-            <li><strong>Methods:</strong> network centrality diagnostics, stress testing, and comparative case analysis.</li>
-            <li><strong>Contribution:</strong> clearer models of exposure, adaptation, and downstream effects.</li>
-          </ul>
-        </article>
-
-        <article class="card project-card">
-          <h2>Aid Distribution</h2>
-          <p>
-            Research on allocation rules, delivery constraints, and implementation tradeoffs in complex environments.
-            Special focus is given to targeting quality, local governance, and strategic behavior by intermediaries.
-          </p>
-          <ul class="list-clean compact">
-            <li><strong>Evidence base:</strong> geospatial indicators, administrative records, and text reports.</li>
-            <li><strong>Objective:</strong> identify where distribution systems perform well or fail.</li>
-          </ul>
-        </article>
-
-        <article class="card project-card">
-          <h2>Human Rights Proliferation</h2>
-          <p>
-            Investigation of how rights norms travel across institutions, legal frameworks, and policy discourse.
-            The project tracks both diffusion mechanisms and points of resistance over time.
-          </p>
-          <ul class="list-clean compact">
-            <li><strong>Analytic lens:</strong> institutional adoption, framing variation, and norm contestation.</li>
-            <li><strong>Expected outputs:</strong> comparative studies and data resources for future scholarship.</li>
-          </ul>
-        </article>
-      </div>
+### Early Stages
+- Book Project: Diplomacy, Hierarchy, and Information Cascades
+- KKK Historical Network Reconstruction (FBI Vault + COINTELPRO)
+- Lumen / Copyright Lawfare and Platform Governance
+- AI and Warfare
+        </pre>
+      </details>
     </main>
-    <footer class="site-footer"><div class="container"><p>© <span id="year"></span> Jared Edgerton</p></div></footer>
-    <script src="assets/site.js"></script>
+
+    <div id="tooltip" class="tooltip" aria-hidden="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script>
+      const projects = [
+        {
+          id: "Strategic Rebel Targeting (PSRM – Conditional Accept, Replication Check)",
+          stage: "Close to Submission",
+          summary:
+            "Examines how rebel actors allocate violence strategically under relational constraints and local bargaining dynamics. The replication check reinforces inferential robustness for publication readiness.",
+          themes: ["Relational Power & Conflict", "Governance & Institutional Power"]
+        },
+        {
+          id: "Interstate War as Relational–Material Joint Decision",
+          stage: "Close to Submission",
+          summary:
+            "Models interstate war onset as a joint function of relational structure and material capabilities. The project integrates network position with strategic decision theory.",
+          themes: ["Relational Power & Conflict", "Network Dynamics & Forecasting"]
+        },
+        {
+          id: "Tariff Waivers and Supplier Network Reconfiguration",
+          stage: "Close to Submission",
+          summary:
+            "Tracks how tariff exemptions alter supplier ties and production pathways across firms and regions. It studies policy-induced restructuring in economic networks.",
+          themes: ["Structural Shock & Reconfiguration", "Network Dynamics & Forecasting", "Governance & Institutional Power"]
+        },
+        {
+          id: "USAID Ecosystem of Aid and Network Fragmentation",
+          stage: "Close to Submission",
+          summary:
+            "Analyzes aid delivery systems as interconnected institutional ecosystems that can fragment under stress. Emphasis is placed on coordination failures and distributional consequences.",
+          themes: ["Information Ecosystems", "Network Dynamics & Forecasting", "Governance & Institutional Power"]
+        },
+        {
+          id: "Rwanda Gacaca Sentencing (Criminology R&R)",
+          stage: "Close to Submission",
+          summary:
+            "Assesses sentencing variation in post-conflict community courts using structured archival and legal records. The study links judicial outcomes to institutional context and social structure.",
+          themes: ["Historical Reconstruction & Measurement", "Governance & Institutional Power"]
+        },
+        {
+          id: "ISIS Foreign Fighter Mobilization",
+          stage: "Close to Submission",
+          summary:
+            "Investigates mobilization pathways into transnational militant networks and the role of social exposure. The project combines diffusion logic with conflict process analysis.",
+          themes: ["Relational Power & Conflict", "Information Ecosystems", "Network Dynamics & Forecasting"]
+        },
+        {
+          id: "Polarization in American Media on Gun Violence",
+          stage: "Close to Submission",
+          summary:
+            "Measures divergence in media framing around gun violence and traces agenda feedback loops. Findings illuminate the structure of ideological information environments.",
+          themes: ["Information Ecosystems", "Governance & Institutional Power"]
+        },
+        {
+          id: "Foreign Policy Media Framing in Podcasts (Alternative vs Mainstream)",
+          stage: "Close to Submission",
+          summary:
+            "Compares narrative construction in podcast ecosystems to identify differences in foreign policy framing. The project maps message diffusion across media communities.",
+          themes: ["Information Ecosystems", "Network Dynamics & Forecasting"]
+        },
+        {
+          id: "State–Rebel War Extension of the Relational Power Model",
+          stage: "In Development",
+          summary:
+            "Extends relational power modeling to state–rebel conflict episodes with dynamic strategic adaptation. It formalizes interaction effects between coercive capacity and network ties.",
+          themes: ["Relational Power & Conflict", "Network Dynamics & Forecasting"]
+        },
+        {
+          id: "Agent-Based Model of Rebel Conflict Dynamics",
+          stage: "In Development",
+          summary:
+            "Builds simulation environments for rebel interaction, escalation, and coalition behavior under uncertainty. The model tests micro-level mechanisms that generate observed conflict patterns.",
+          themes: ["Relational Power & Conflict", "Network Dynamics & Forecasting", "Structural Shock & Reconfiguration"]
+        },
+        {
+          id: "Dynamic Multiplex GNN Forecasting of US–China Embeddedness",
+          stage: "In Development",
+          summary:
+            "Develops graph neural forecasting tools for layered US–China interdependence across domains. The work prioritizes temporal prediction and interpretable multiplex representation.",
+          themes: ["Network Dynamics & Forecasting", "Structural Shock & Reconfiguration", "Information Ecosystems"]
+        },
+        {
+          id: "Temporal Community Detection Generalization (Louvain/Leiden Extension)",
+          stage: "In Development",
+          summary:
+            "Generalizes community detection methods for time-varying network structures. The project targets methodological improvements for robust partitioning under dynamic change.",
+          themes: ["Network Dynamics & Forecasting", "Historical Reconstruction & Measurement"]
+        },
+        {
+          id: "Tenet Media and Foreign Influence Networks",
+          stage: "In Development",
+          summary:
+            "Examines cross-border influence operations through media-linked relational networks. It combines attribution-oriented measurement with diffusion mapping.",
+          themes: ["Information Ecosystems", "Governance & Institutional Power", "Relational Power & Conflict"]
+        },
+        {
+          id: "Estimating the Rate of Sexual Assault in Rwanda",
+          stage: "In Development",
+          summary:
+            "Produces defensible prevalence estimates using mixed-source evidence and measurement correction. The study supports policy-relevant inference in difficult data environments.",
+          themes: ["Historical Reconstruction & Measurement", "Governance & Institutional Power"]
+        },
+        {
+          id: "Human Trafficking and Environmental Shock",
+          stage: "In Development",
+          summary:
+            "Analyzes whether environmental disruption changes trafficking routes, vulnerability, and enforcement effectiveness. The project links ecological stress to institutional response capacity.",
+          themes: ["Structural Shock & Reconfiguration", "Governance & Institutional Power", "Relational Power & Conflict"]
+        },
+        {
+          id: "Book Project: Diplomacy, Hierarchy, and Information Cascades",
+          stage: "Early Stages",
+          summary:
+            "Develops a broader theoretical account of diplomatic hierarchy and cascade dynamics in international politics. The book project integrates historical cases with relational inference.",
+          themes: ["Relational Power & Conflict", "Information Ecosystems", "Governance & Institutional Power"]
+        },
+        {
+          id: "KKK Historical Network Reconstruction (FBI Vault + COINTELPRO)",
+          stage: "Early Stages",
+          summary:
+            "Reconstructs covert organizational ties from archival federal records to study extremist coordination. Emphasis is placed on transparent measurement and longitudinal comparability.",
+          themes: ["Historical Reconstruction & Measurement", "Relational Power & Conflict", "Information Ecosystems"]
+        },
+        {
+          id: "Lumen / Copyright Lawfare and Platform Governance",
+          stage: "Early Stages",
+          summary:
+            "Investigates legal pressure campaigns and content governance outcomes in digital platforms. The project connects institutional rulemaking to information control strategies.",
+          themes: ["Governance & Institutional Power", "Information Ecosystems"]
+        },
+        {
+          id: "AI and Warfare",
+          stage: "Early Stages",
+          summary:
+            "Explores strategic implications of AI-enabled military systems for escalation, deterrence, and command structures. The work examines both doctrinal adaptation and governance tradeoffs.",
+          themes: ["Relational Power & Conflict", "Structural Shock & Reconfiguration", "Governance & Institutional Power"]
+        }
+      ];
+
+      const stageColors = {
+        "Close to Submission": getComputedStyle(document.documentElement).getPropertyValue("--close").trim(),
+        "In Development": getComputedStyle(document.documentElement).getPropertyValue("--development").trim(),
+        "Early Stages": getComputedStyle(document.documentElement).getPropertyValue("--early").trim()
+      };
+
+      const links = [];
+      for (let i = 0; i < projects.length; i++) {
+        for (let j = i + 1; j < projects.length; j++) {
+          const shared = projects[i].themes.filter((theme) => projects[j].themes.includes(theme));
+          if (shared.length > 0) {
+            links.push({
+              source: projects[i].id,
+              target: projects[j].id,
+              weight: shared.length,
+              sharedThemes: shared
+            });
+          }
+        }
+      }
+
+      const svg = d3.select("#network");
+      const width = document.getElementById("network").clientWidth;
+      const height = document.getElementById("network").clientHeight;
+      const tooltip = d3.select("#tooltip");
+
+      const simulation = d3
+        .forceSimulation(projects)
+        .force("link", d3.forceLink(links).id((d) => d.id).distance(90).strength((d) => Math.min(0.25 + d.weight * 0.08, 0.6)))
+        .force("charge", d3.forceManyBody().strength(-165))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide().radius(24));
+
+      const link = svg
+        .append("g")
+        .attr("stroke", "#cbd2d9")
+        .attr("stroke-opacity", 0.65)
+        .selectAll("line")
+        .data(links)
+        .join("line")
+        .attr("stroke-width", (d) => 0.8 + d.weight * 0.65);
+
+      const node = svg
+        .append("g")
+        .attr("stroke", "#ffffff")
+        .attr("stroke-width", 1.2)
+        .selectAll("circle")
+        .data(projects)
+        .join("circle")
+        .attr("r", 8.5)
+        .attr("fill", (d) => stageColors[d.stage])
+        .call(
+          d3
+            .drag()
+            .on("start", dragStarted)
+            .on("drag", dragged)
+            .on("end", dragEnded)
+        );
+
+      const labels = svg
+        .append("g")
+        .selectAll("text")
+        .data(projects)
+        .join("text")
+        .attr("class", "node-label")
+        .text((d) => d.id.length > 42 ? `${d.id.slice(0, 39)}...` : d.id)
+        .attr("dx", 11)
+        .attr("dy", 3);
+
+      node
+        .on("mouseover", (event, d) => {
+          tooltip
+            .style("opacity", 1)
+            .attr("aria-hidden", "false")
+            .html(`<strong>${d.id}</strong><br>${d.summary}`);
+        })
+        .on("mousemove", (event) => {
+          tooltip.style("left", `${event.pageX + 16}px`).style("top", `${event.pageY + 16}px`);
+        })
+        .on("mouseout", () => {
+          tooltip.style("opacity", 0).attr("aria-hidden", "true");
+        });
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", (d) => d.source.x)
+          .attr("y1", (d) => d.source.y)
+          .attr("x2", (d) => d.target.x)
+          .attr("y2", (d) => d.target.y);
+
+        node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+
+        labels.attr("x", (d) => d.x).attr("y", (d) => d.y);
+      });
+
+      function dragStarted(event) {
+        if (!event.active) simulation.alphaTarget(0.2).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+      }
+
+      function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+      }
+
+      function dragEnded(event) {
+        if (!event.active) simulation.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+      }
+    </script>
   </body>
 </html>
