@@ -60,22 +60,24 @@ build_igo_edgelist <- function(base_dy) {
 #' Build the trade edge list.
 #'
 #' Uses peacesciencer's add_cow_trade(), which returns:
-#'   flow1  — imports of ccode1 from ccode2 (millions current USD)
-#'   flow2  — imports of ccode2 from ccode1 (millions current USD)
+#'   flow1       — imports of ccode1 from ccode2 (millions current USD)
+#'   flow2       — imports of ccode2 from ccode1 (millions current USD)
+#'   smoothflow1 — smoothed version of flow1
+#'   smoothflow2 — smoothed version of flow2
 #'
-#' For undirected data the function also produces smoothtotrade.
-#' We compute total_trade = flow1 + flow2 when both are non-missing.
+#' NOTE: The dyadic trade data must be downloaded first via
+#'   peacesciencer::download_extdata()
 #'
 #' @param base_dy A dyad-year tibble created by create_dyadyears().
 #' @return A tibble with columns: ccode1, ccode2, year,
-#'         flow1, flow2, total_trade.
+#'         flow1, flow2, smoothflow1, smoothflow2, total_trade.
 build_trade_edgelist <- function(base_dy) {
   message("Building bilateral trade layer...")
   base_dy %>%
     add_cow_trade() %>%
-    # CoW uses -9 for missing; peacesciencer converts to NA
     mutate(total_trade = flow1 + flow2) %>%
-    select(ccode1, ccode2, year, flow1, flow2, total_trade) %>%
+    select(ccode1, ccode2, year, flow1, flow2,
+           smoothflow1, smoothflow2, total_trade) %>%
     filter(!is.na(total_trade), total_trade > 0)
 }
 
@@ -242,14 +244,20 @@ build_pta_edgelist <- function(desta_path, year_range = NULL) {
 #'           or https://correlatesofwar.org/data-sets/defense-cooperation-agreement-dataset/
 #'
 #' The DCAD dyadic file contains binary indicators for whether a country-pair
-#' has an active DCA in a given year.
+#' has an active DCA in a given year. Six indicator variants exist:
+#'   dcaGeneralV1 / dcaGeneralV2  — general agreements (strict / broad)
+#'   dcaSectorV1  / dcaSectorV2   — sector agreements  (strict / broad)
+#'   dcaAnyV1     / dcaAnyV2      — any agreement      (strict / broad)
 #'
 #' @param dcad_path Path to the DCAD dataset (.dta, .csv, or .xlsx).
 #'        This should be the dyad-year file, not the treaty-level file.
 #' @param year_range Optional numeric vector c(start, end) to subset years.
-#' @return A tibble with columns: ccode1, ccode2, year, plus any DCAD
-#'         indicators present in the source data.
-build_dca_edgelist <- function(dcad_path, year_range = NULL) {
+#' @param dca_indicator Which DCAD indicator to use for filtering active DCAs.
+#'        Default "dcaAnyV1" (any agreement, high confidence). Set to NULL
+#'        to return all rows without filtering.
+#' @return A tibble with columns: ccode1, ccode2, year, plus DCAD indicators.
+build_dca_edgelist <- function(dcad_path, year_range = NULL,
+                                dca_indicator = "dcaAnyV1") {
   message("Building DCA layer from DCAD (Kinne 2020)...")
 
   ext <- tools::file_ext(dcad_path)
@@ -283,13 +291,6 @@ build_dca_edgelist <- function(dcad_path, year_range = NULL) {
     }
   }
 
-  # Detect the DCA indicator column — commonly named "dca" or "dcad"
-  dca_cols <- names(dcad)[str_detect(names(dcad), "^dca")]
-  if (length(dca_cols) == 0) {
-    message("  Note: No column starting with 'dca' found. ",
-            "Returning all dyad-year rows; filter manually as needed.")
-  }
-
   # Ensure undirected ordering
   dcad <- dcad %>%
     mutate(
@@ -304,10 +305,24 @@ build_dca_edgelist <- function(dcad_path, year_range = NULL) {
     dcad <- dcad %>% filter(year >= year_range[1], year <= year_range[2])
   }
 
-  # Filter to active DCAs if indicator column exists
-  if (length(dca_cols) > 0) {
-    indicator <- dca_cols[1]
-    dcad <- dcad %>% filter(.data[[indicator]] == 1)
+  # Filter to active DCAs using the specified indicator
+  if (!is.null(dca_indicator)) {
+    # The DCAD column names are case-sensitive in the original data;
+    # we lowered them above, so match case-insensitively
+    indicator_lc <- tolower(dca_indicator)
+    if (indicator_lc %in% names(dcad)) {
+      dcad <- dcad %>% filter(.data[[indicator_lc]] == 1)
+    } else {
+      # Fallback: detect any column starting with "dca"
+      dca_cols <- names(dcad)[str_detect(names(dcad), "^dca")]
+      if (length(dca_cols) > 0) {
+        message(sprintf("  Indicator '%s' not found. Using '%s' instead.",
+                        dca_indicator, dca_cols[1]))
+        dcad <- dcad %>% filter(.data[[dca_cols[1]]] == 1)
+      } else {
+        message("  No DCA indicator column found. Returning all rows.")
+      }
+    }
   }
 
   dcad <- dcad %>%
@@ -372,6 +387,12 @@ generate_multiplex_network <- function(
   message("=== Multiplex Network Generator ===")
   message(sprintf("Year range: %d-%d | Directed: %s | System: %s",
                   year_range[1], year_range[2], directed, system))
+
+  # --- Step 0: Ensure external peacesciencer data is available -------------
+  # The CoW dyadic trade data is too large for CRAN and lives remotely.
+  # download_extdata() is idempotent — it skips files that already exist.
+  message("\nEnsuring peacesciencer external data is available...")
+  peacesciencer::download_extdata()
 
   # --- Step 1: Build the base dyad-year scaffold --------------------------
   message("\nCreating base dyad-year data...")
