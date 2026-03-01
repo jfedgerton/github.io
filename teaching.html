@@ -10,6 +10,9 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="site-title" href="index.html">Jared Edgerton</a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <nav aria-label="Main navigation">
           <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
@@ -23,11 +26,13 @@
       </div>
     </header>
     <main class="container">
-      <h1>Teaching</h1>
-      <p>
-        Courses emphasize conceptual clarity, rigorous methods, and practical analytic skills that students can apply in
-        research and policy settings.
-      </p>
+      <div class="page-intro">
+        <h1>Teaching</h1>
+        <p>
+          Courses emphasize conceptual clarity, rigorous methods, and practical analytic skills that students can apply in
+          research and policy settings.
+        </p>
+      </div>
 
       <div class="card-grid">
         <article class="card">
@@ -39,14 +44,14 @@
         </article>
 
         <article class="card">
-          <h2>Penn State — Undergraduate (SoDA)</h2>
+          <h2>Penn State &mdash; Undergraduate (SoDA)</h2>
           <ul class="list-clean">
             <li>Data Visualization (Undergraduate)</li>
           </ul>
         </article>
 
         <article class="card">
-          <h2>Penn State — Graduate</h2>
+          <h2>Penn State &mdash; Graduate</h2>
           <ul class="list-clean">
             <li>PLSC 502</li>
             <li>PLSC Machine Learning</li>
@@ -55,7 +60,11 @@
         </article>
       </div>
     </main>
-    <footer class="site-footer"><div class="container"><p>© <span id="year"></span> Jared Edgerton</p></div></footer>
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Jared Edgerton</p>
+      </div>
+    </footer>
     <script src="assets/site.js"></script>
   </body>
 </html>

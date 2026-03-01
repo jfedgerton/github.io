@@ -10,6 +10,9 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="site-title" href="index.html">Jared Edgerton</a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <nav aria-label="Main navigation">
           <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
@@ -23,11 +26,13 @@
       </div>
     </header>
     <main class="container">
-      <h1>Research</h1>
-      <p>
-        My research combines computational social science with substantive political questions, with particular attention
-        to conflict processes, strategic behavior, and information dynamics.
-      </p>
+      <div class="page-intro">
+        <h1>Research</h1>
+        <p>
+          My research combines computational social science with substantive political questions, with particular attention
+          to conflict processes, strategic behavior, and information dynamics.
+        </p>
+      </div>
       <div class="card-grid">
         <article class="card">
           <h2>Methodological Innovation</h2>
@@ -51,7 +56,11 @@
         </article>
       </div>
     </main>
-    <footer class="site-footer"><div class="container"><p>© <span id="year"></span> Jared Edgerton</p></div></footer>
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Jared Edgerton</p>
+      </div>
+    </footer>
     <script src="assets/site.js"></script>
   </body>
 </html>

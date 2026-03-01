@@ -10,6 +10,9 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="site-title" href="index.html">Jared Edgerton</a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <nav aria-label="Main navigation">
           <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
@@ -23,17 +26,32 @@
       </div>
     </header>
     <main class="container">
-      <h1>Contact</h1>
-      <p>
-        I welcome conversations about research collaboration, methods training, and invited talks.
-      </p>
-      <ul class="list-clean">
-        <li><strong>Primary contact:</strong> Please use the email listed in the current CV for the fastest response.</li>
-        <li><strong>Affiliation:</strong> Political Science and Data Science, Penn State.</li>
-        <li><strong>Materials:</strong> CV and project summaries are available on this site.</li>
-      </ul>
+      <div class="page-intro">
+        <h1>Contact</h1>
+        <p>
+          I welcome conversations about research collaboration, methods training, and invited talks.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>Email</strong>
+          <span>Please use the email listed in the current CV for the fastest response.</span>
+        </div>
+        <div class="contact-item">
+          <strong>Affiliation</strong>
+          <span>Political Science and Data Science, Penn State.</span>
+        </div>
+        <div class="contact-item">
+          <strong>Materials</strong>
+          <span>CV and project summaries are available on this site.</span>
+        </div>
+      </div>
     </main>
-    <footer class="site-footer"><div class="container"><p>© <span id="year"></span> Jared Edgerton</p></div></footer>
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Jared Edgerton</p>
+      </div>
+    </footer>
     <script src="assets/site.js"></script>
   </body>
 </html>

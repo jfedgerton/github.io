@@ -4,53 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ongoing Projects Network | Jared Edgerton</title>
+    <link rel="stylesheet" href="assets/styles.css" />
     <style>
       :root {
-        --bg: #ffffff;
-        --text: #1f2933;
-        --muted: #52606d;
-        --line: #d9e2ec;
         --close: #2f4f4f;
         --development: #6b7c93;
         --early: #9aa5b1;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 3rem;
-      }
-
-      h1,
-      h2 {
-        font-weight: 600;
-        letter-spacing: 0.01em;
-      }
-
-      h1 {
-        margin-bottom: 0.5rem;
-      }
-
-      p {
-        color: var(--muted);
-        max-width: 95ch;
-      }
-
       .diagram-wrap {
         margin-top: 1.5rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 10px;
         padding: 1rem;
         background: #fbfcfd;
@@ -106,7 +70,7 @@
 
       details {
         margin-top: 1.5rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 10px;
         padding: 0.75rem 1rem;
         background: #fbfcfd;
@@ -141,16 +105,34 @@
     </style>
   </head>
   <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="site-title" href="index.html">Jared Edgerton</a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <nav aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a class="active" href="projects.html">Projects</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
     <main class="container">
-      <h1>Ongoing Projects</h1>
-      <p>
-        This diagram maps the structural relationships across my current research agenda and highlights how projects cluster
-        around recurring conceptual concerns. Each node corresponds to one project, organized by stage from early scoping
-        to near-submission completion. Edges represent shared conceptual or methodological foundations, indicating where
-        projects draw on related theories of power, information, and institutional change. The visualization is intended as
-        a compact overview of both substantive continuity and methodological integration across topics. Together, these
-        links show how individual studies contribute to a coherent, cumulative research program.
-      </p>
+      <div class="page-intro">
+        <h1>Ongoing Projects</h1>
+        <p>
+          This diagram maps the structural relationships across my current research agenda and highlights how projects cluster
+          around recurring conceptual concerns. Each node corresponds to one project, organized by stage from early scoping
+          to near-submission completion. Edges represent shared conceptual or methodological foundations.
+        </p>
+      </div>
 
       <section class="diagram-wrap" aria-label="Interactive project network diagram">
         <div class="legend" aria-label="Legend for node colors by stage">
@@ -195,8 +177,15 @@
       </details>
     </main>
 
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Jared Edgerton</p>
+      </div>
+    </footer>
+
     <div id="tooltip" class="tooltip" aria-hidden="true"></div>
 
+    <script src="assets/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script>
       const projects = [
