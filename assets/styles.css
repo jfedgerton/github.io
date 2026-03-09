@@ -172,16 +172,8 @@ p {
   box-shadow: 0 10px 24px -24px rgba(2, 6, 23, 0.45);
 }
 
-.project-card {
-  border-top: 4px solid var(--accent);
-}
-
 .list-clean {
   padding-left: 1.1rem;
-}
-
-.compact li {
-  margin-bottom: 0.35rem;
 }
 
 .site-footer {
