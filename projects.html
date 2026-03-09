@@ -4,56 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ongoing Projects Network | Jared Edgerton</title>
+    <meta
+      name="description"
+      content="Interactive network diagram mapping the structural relationships across Jared Edgerton's current research projects."
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JE</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
     <style>
       :root {
-        --bg: #ffffff;
-        --text: #1f2933;
-        --muted: #52606d;
-        --line: #d9e2ec;
         --close: #2f4f4f;
         --development: #6b7c93;
         --early: #9aa5b1;
       }
 
-      * {
-        box-sizing: border-box;
+      [data-theme="dark"] {
+        --close: #5eead4;
+        --development: #94a3b8;
+        --early: #64748b;
       }
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 3rem;
-      }
-
-      h1,
-      h2 {
-        font-weight: 600;
-        letter-spacing: 0.01em;
-      }
-
-      h1 {
-        margin-bottom: 0.5rem;
-      }
-
-      p {
-        color: var(--muted);
-        max-width: 95ch;
+      .projects-container {
+        width: min(100% - 2rem, 1200px);
+        margin-inline: auto;
       }
 
       .diagram-wrap {
         margin-top: 1.5rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 10px;
         padding: 1rem;
-        background: #fbfcfd;
+        background: var(--card);
       }
 
       .legend {
@@ -84,7 +67,7 @@
       }
 
       .node-label {
-        fill: #243b53;
+        fill: var(--text);
         font-size: 0.72rem;
         pointer-events: none;
       }
@@ -92,24 +75,25 @@
       .tooltip {
         position: absolute;
         max-width: 330px;
-        background: #ffffff;
-        border: 1px solid #bcccdc;
+        background: var(--card);
+        border: 1px solid var(--border);
         border-radius: 8px;
         padding: 0.7rem 0.85rem;
         font-size: 0.86rem;
-        color: #243b53;
+        color: var(--text);
         box-shadow: 0 7px 20px rgba(16, 24, 40, 0.08);
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.16s ease;
+        z-index: 20;
       }
 
       details {
         margin-top: 1.5rem;
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 10px;
         padding: 0.75rem 1rem;
-        background: #fbfcfd;
+        background: var(--card);
       }
 
       summary {
@@ -123,12 +107,12 @@
         white-space: pre-wrap;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         font-size: 0.84rem;
-        color: #334e68;
+        color: var(--muted);
       }
 
       .helper-text {
         font-size: 0.88rem;
-        color: #627d98;
+        color: var(--muted);
         margin-top: 0.35rem;
         margin-bottom: 0.8rem;
       }
@@ -141,7 +125,24 @@
     </style>
   </head>
   <body>
-    <main class="container">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="site-title" href="index.html">Jared Edgerton</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a class="active" href="projects.html">Projects</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode"></button>
+      </div>
+    </header>
+
+    <main class="projects-container">
       <h1>Ongoing Projects</h1>
       <p>
         This diagram maps the structural relationships across my current research agenda and highlights how projects cluster
@@ -161,7 +162,9 @@
           <span class="legend-item"><span class="legend-swatch" style="background: var(--early)"></span>Early Stages</span>
         </div>
         <div class="helper-text">Hover over any project node to view a short summary. Drag nodes to inspect thematic neighborhoods.</div>
-        <svg id="network" role="img" aria-label="Force-directed network of ongoing research projects"></svg>
+        <svg id="network" role="img" aria-label="Force-directed network of ongoing research projects">
+          <title>Force-directed network diagram of ongoing research projects</title>
+        </svg>
       </section>
 
       <details>
@@ -197,6 +200,9 @@
 
     <div id="tooltip" class="tooltip" aria-hidden="true"></div>
 
+    <footer class="site-footer"><div class="container"><p>&copy; <span id="year"></span> Jared Edgerton</p></div></footer>
+
+    <script src="assets/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script>
       const projects = [
@@ -356,6 +362,7 @@
         }
       }
 
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
       const svg = d3.select("#network");
       const width = document.getElementById("network").clientWidth;
       const height = document.getElementById("network").clientHeight;
@@ -370,7 +377,7 @@
 
       const link = svg
         .append("g")
-        .attr("stroke", "#cbd2d9")
+        .attr("stroke", isDark ? "#475569" : "#cbd2d9")
         .attr("stroke-opacity", 0.65)
         .selectAll("line")
         .data(links)
@@ -379,7 +386,7 @@
 
       const node = svg
         .append("g")
-        .attr("stroke", "#ffffff")
+        .attr("stroke", isDark ? "#1e293b" : "#ffffff")
         .attr("stroke-width", 1.2)
         .selectAll("circle")
         .data(projects)
