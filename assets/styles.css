@@ -114,6 +114,37 @@ main {
   box-shadow: 0 14px 35px -28px rgba(0, 0, 0, 0.6);
 }
 
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.headshot {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--border);
+}
+
+.hero-text {
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .headshot {
+    width: 140px;
+    height: 140px;
+  }
+}
+
 .kicker {
   text-transform: uppercase;
   font-size: 0.75rem;
