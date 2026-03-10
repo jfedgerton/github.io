@@ -6,13 +6,35 @@
     <title>Research | Jared Edgerton</title>
     <meta
       name="description"
-      content="Research areas in computational social science, conflict processes, and information dynamics by Jared Edgerton."
+      content="Publications and research by Jared Edgerton in political science, network analysis, conflict processes, and computational methods."
     />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JE</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      .pub-section { margin-top: 2.5rem; }
+      .pub-section h2 { border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
+      .pub-list { list-style: none; padding: 0; counter-reset: pub; }
+      .pub-list li {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .pub-list li:last-child { border-bottom: none; }
+      .pub-title { color: var(--text); font-weight: 600; }
+      .pub-venue { font-style: italic; }
+      .pub-award {
+        display: inline-block;
+        margin-top: 0.3rem;
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--accent);
+      }
+      .pub-coauthors { font-size: 0.92rem; }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -23,6 +45,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a class="active" href="research.html">Research</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="collaborators.html">Collaborators</a></li>
             <li><a href="teaching.html">Teaching</a></li>
             <li><a href="cv.html">CV</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -37,30 +60,210 @@
         My research combines computational social science with substantive political questions, with particular attention
         to conflict processes, strategic behavior, and information dynamics.
       </p>
+
       <div class="card-grid">
         <article class="card">
-          <h2>Methodological Innovation</h2>
+          <h3>Methodological Innovation</h3>
           <p>
             Developing robust workflows for machine learning and causal analysis in political science, with an emphasis
             on transparent validation and reproducibility.
           </p>
         </article>
         <article class="card">
-          <h2>Conflict & Security Applications</h2>
+          <h3>Conflict &amp; Security Applications</h3>
           <p>
             Applying these methods to international security and political violence to improve both explanatory and
             predictive performance.
           </p>
         </article>
         <article class="card">
-          <h2>Collaborative Infrastructure</h2>
+          <h3>Collaborative Infrastructure</h3>
           <p>
             Building shared data and code practices that make interdisciplinary teamwork more efficient and replicable.
           </p>
         </article>
       </div>
+
+      <!-- Refereed Articles -->
+      <section class="pub-section">
+        <h2>Refereed Articles</h2>
+        <ol class="pub-list" reversed>
+          <li>
+            <span class="pub-title">"Bound by Blood and Bloodshed: Sibling Ties and Participation in Genocidal Violence."</span>
+            <span class="pub-coauthors">With Hollie Nyseth Nzitatira, Jack Wippell, and Evelyn Gertz.</span>
+            Forthcoming at <span class="pub-venue">Criminology.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Hierarchy misalignment and war: Network effects of relational and material power."</span>
+            <span class="pub-coauthors">With Dagmar Heintze, Mael van Beek, and Haoming Xiong.</span>
+            Conditionally accepted at <span class="pub-venue">Political Science Research and Methods.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Mapping Rebellion: Networks of civilian and state violence during civil conflicts."</span>
+            <span class="pub-coauthors">With Gary Uzonyi.</span>
+            Conditionally accepted at <span class="pub-venue">Political Science Research and Methods.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Unpacking the gendered dimensions of political violence: Network centrality of women fighters during the 1994 genocide in Rwanda."</span> 2025.
+            <span class="pub-venue">American Journal of Political Science.</span>
+            <span class="pub-coauthors">With Elizabeth Brannon, Dagmar Heintze, and Hollie Nyseth Nzitatira.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Hierarchy and war."</span> 2025.
+            <span class="pub-venue">American Journal of Political Science.</span>
+            <span class="pub-coauthors">With Mael van Beek, Bear Braumoeller, and the MESO Research Lab.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Meet the press: Gendered conversational norms in televised political discussion."</span> 2025.
+            <span class="pub-venue">The Journal of Politics.</span>
+            <span class="pub-coauthors">With Daniel Naftel, Skyler Cranmer, and the NISS Lab.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Cooperative communities in the international system: Networked cooperation of similar states."</span> 2024.
+            <span class="pub-venue">The Journal of Politics.</span>
+          </li>
+          <li>
+            <span class="pub-title">"The impact of radio on violent conflict: New evidence from Rwanda."</span> 2024.
+            <span class="pub-venue">American Sociological Review.</span>
+            <span class="pub-coauthors">With Hollie Nyseth Nzitatira and Trey Billings.</span>
+            <br /><span class="pub-award">Co-winner of the Best Paper Award by the American Sociological Association's Section on Sociology of Human Rights</span>
+          </li>
+          <li>
+            <span class="pub-title">"Social origins of conflict: Islamic State foreign fighter mobilization."</span> 2024.
+            <span class="pub-venue">Journal of Conflict Resolution.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Analyzing participants in the 1994 genocide against the Tutsi."</span> 2023.
+            <span class="pub-venue">Journal of Peace Research.</span>
+            <span class="pub-coauthors">With Hollie Nyseth Nzitatira and Laura C. Frizzell.</span>
+          </li>
+          <li>
+            <span class="pub-title">"The effect of exogenous shocks on team networks."</span> 2022.
+            <span class="pub-venue">Network Science.</span>
+            <span class="pub-coauthors">With Skyler J. Cranmer and Victor Finomore.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Disrupting terrorist recruitment: Network knockouts of Islamic State recruiters."</span> 2022.
+            <span class="pub-venue">Journal of Complex Networks</span> 10.
+            <span class="pub-coauthors">With Selena Wang.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Suicide bomber mobilization and kin and peer ties."</span> 2022.
+            <span class="pub-venue">Social Networks</span> 70(1), 36&ndash;54.
+          </li>
+          <li>
+            <span class="pub-title">"Elusive consensus: Polarization in elite communication on the COVID-19 pandemic."</span> 2020.
+            <span class="pub-venue">Science Advances</span> 6.
+            <span class="pub-coauthors">With Jon Green, Skyler Cranmer, and the NISS Lab.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Crater detection from commercial satellite imagery to identify unexploded ordnance in Cambodian agricultural land."</span> 2020.
+            <span class="pub-venue">PLOS One</span> 15.
+            <span class="pub-coauthors">With Erin Lin, Rongjun Qin, and Daren Kong.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Classifying prisoner returns: A research note."</span> 2016.
+            <span class="pub-venue">Justice Research and Policy.</span>
+            <span class="pub-coauthors">With Gerald G. Gaes, Jeremy Luallen, and William Rhodes.</span>
+          </li>
+          <li>
+            <span class="pub-title">"A quasi-experimental evaluation of the impact of public assistance on prisoner recidivism."</span> 2016.
+            <span class="pub-venue">Journal of Quantitative Criminology.</span>
+            <span class="pub-coauthors">With Jeremy Luallen and Dierdre Rabideau.</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Submitted for Review -->
+      <section class="pub-section">
+        <h2>Submitted for Review</h2>
+        <ol class="pub-list" reversed>
+          <li>
+            <span class="pub-title">"Determinants of Case Outcomes in Rwanda's Post-Genocide."</span>
+            <span class="pub-coauthors">With Hollie Nyseth Nzitatira and Anneliese Ward.</span>
+            Invited to revise and resubmit to <span class="pub-venue">Criminology.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Human Rights Consolidation or Fragmentation? A Network Analysis of Resolution Sponsorship in the UN Human Rights Council."</span>
+            <span class="pub-coauthors">With Gino Pauselli and Cecilia Cavero-S&aacute;nchez.</span>
+            Invited to revise and resubmit to <span class="pub-venue">Network Science.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Foreign Policy Elite Messaging: Elite Framing during Conflict Crises."</span>
+            <span class="pub-coauthors">With Jing Lou, Chandler L'Hommedieu, and Skyler Cranmer.</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Developing Projects -->
+      <section class="pub-section">
+        <h2>Developing Projects</h2>
+        <ol class="pub-list" reversed>
+          <li>
+            <span class="pub-title">"Conflict cycles: Group membership, policy diffusion, polarization, and conflict in the international system."</span>
+            Ongoing book project.
+          </li>
+          <li>
+            <span class="pub-title">"Lawfare, copyright, and state suppression of dissident information."</span>
+            <span class="pub-coauthors">With Pengfei Zhang, Natalia Lamberova, and Anton Sobelev, University of Texas at Dallas.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Foreign lobbying and political content in podcast media."</span>
+            <span class="pub-coauthors">With Jon Green of Duke University.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Foreign policy is no laughing matter: Comedy vs. mainstream discourse."</span>
+          </li>
+          <li>
+            <span class="pub-title">"Strategy War: A Bayesian model of selective state targeting."</span>
+          </li>
+          <li>
+            <span class="pub-title">"Forecasting systemic shifts with Graph Neural Networks."</span>
+          </li>
+          <li>
+            <span class="pub-title">"Understanding labor trafficking in Brazil."</span>
+            <span class="pub-coauthors">With Stanford University Human Trafficking Data Lab.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Evaluating policing biases using synthetic text."</span>
+            <span class="pub-coauthors">With Stanford University Human Trafficking Data Lab.</span>
+          </li>
+          <li>
+            <span class="pub-title">"Temporal community detection for evolving networks."</span>
+          </li>
+          <li>
+            <span class="pub-title">"Guns in the news: Mass shootings and media framing."</span>
+            <span class="pub-coauthors">With Jack Wippell of Ohio State University and Cara Nix of Black Wealth Data Center.</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Grants -->
+      <section class="pub-section">
+        <h2>Grants</h2>
+        <ul class="pub-list">
+          <li>
+            <span class="pub-title">National Science Foundation Research Grant</span>, 2021. Helped draft the grant that established the Ohio State University Modeling Emergent Social Order Research Lab. $750,000.
+          </li>
+          <li>
+            <span class="pub-title">Carnegie Corporation Research Grant</span>, 2021. Helped draft the grant that established the Ohio State University Modeling Emergent Social Order Research Lab. $200,000.
+          </li>
+          <li>
+            <span class="pub-title">Mershon Center for International Security Studies Research Grant</span>, 2020. Ohio State University student grant award. $4,000.
+          </li>
+          <li>
+            <span class="pub-title">Mershon Center for International Security Studies Research Grant</span>, 2020. Ohio State University student grant award. $4,000.
+          </li>
+          <li>
+            <span class="pub-title">Mershon Center for International Security Studies Research Grant</span>, 2016. Ohio State University student grant award. $5,450.
+          </li>
+          <li>
+            <span class="pub-title">Department of Political Science Research Grant</span>, 2016. Ohio State University award. $5,000.
+          </li>
+        </ul>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container"><p>© <span id="year"></span> Jared Edgerton</p></div></footer>
+    <footer class="site-footer"><div class="container"><p>&copy; <span id="year"></span> Jared Edgerton</p></div></footer>
     <script src="assets/site.js"></script>
   </body>
 </html>
