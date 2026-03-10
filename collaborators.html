@@ -59,6 +59,22 @@
       }
       .collab-section { margin-top: 2rem; }
       .collab-section h2 { border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
+      .filter-btn {
+        padding: 0.4rem 1rem;
+        border-radius: 2rem;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 160ms ease, color 160ms ease;
+      }
+      .filter-btn.active {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
     </style>
   </head>
   <body>
@@ -87,6 +103,11 @@
         and ongoing research.
       </p>
 
+      <div style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <button class="filter-btn active" data-filter="all">All (24)</button>
+        <button class="filter-btn" data-filter="phd">PhD Colleagues</button>
+        <button class="filter-btn" data-filter="other">Other Collaborators</button>
+      </div>
       <div class="collab-grid" id="collab-grid"></div>
 
       <section class="collab-section">
@@ -104,30 +125,30 @@
     <script src="assets/site.js"></script>
     <script>
       const collaborators = [
-        { name: "Skyler J. Cranmer", affiliation: "Ohio State University" },
-        { name: "Hollie Nyseth Nzitatira", affiliation: "University of Dayton" },
-        { name: "Mael van Beek", affiliation: "University of Georgia" },
-        { name: "Dagmar Heintze", affiliation: "UT Dallas" },
-        { name: "Bear Braumoeller", affiliation: "Ohio State University" },
-        { name: "Jon Green", affiliation: "Duke University" },
-        { name: "Gary Uzonyi", affiliation: "University of Strathclyde" },
-        { name: "Elizabeth Brannon", affiliation: "Indiana University" },
-        { name: "Jack Wippell", affiliation: "Ohio State University" },
-        { name: "Evelyn Gertz", affiliation: "Meta" },
-        { name: "Haoming Xiong", affiliation: "University of Nebraska\u2013Lincoln" },
-        { name: "Daniel Naftel", affiliation: "Harvard University" },
-        { name: "Trey Billings", affiliation: "ACLED" },
-        { name: "Selena Wang", affiliation: "Indiana University" },
-        { name: "Erin Lin", affiliation: "Ohio State University" },
-        { name: "Gino Pauselli", affiliation: "University of Illinois" },
-        { name: "Cecilia Cavero-S\u00e1nchez", affiliation: "Penn State" },
-        { name: "Jing Luo", affiliation: "Ohio State University" },
-        { name: "Chandler L'Hommedieu", affiliation: "Ohio State University" },
-        { name: "Anneliese Ward", affiliation: "Ohio State University" },
-        { name: "Pengfei Zhang", affiliation: "UT Dallas" },
-        { name: "Natalia Lamberova", affiliation: "UT Dallas" },
-        { name: "Anton Sobelev", affiliation: "UT Dallas" },
-        { name: "Cara Nix", affiliation: "Black Wealth Data Center" }
+        { name: "Skyler J. Cranmer", affiliation: "Ohio State University", phd: false },
+        { name: "Hollie Nyseth Nzitatira", affiliation: "University of Dayton", phd: false },
+        { name: "Mael van Beek", affiliation: "University of Georgia", phd: false },
+        { name: "Dagmar Heintze", affiliation: "UT Dallas", phd: true },
+        { name: "Bear Braumoeller", affiliation: "Ohio State University", phd: false },
+        { name: "Jon Green", affiliation: "Duke University", phd: false },
+        { name: "Gary Uzonyi", affiliation: "University of Strathclyde", phd: false },
+        { name: "Elizabeth Brannon", affiliation: "Indiana University", phd: false },
+        { name: "Jack Wippell", affiliation: "Ohio State University", phd: true },
+        { name: "Evelyn Gertz", affiliation: "Meta", phd: false },
+        { name: "Haoming Xiong", affiliation: "University of Nebraska\u2013Lincoln", phd: false },
+        { name: "Daniel Naftel", affiliation: "Harvard University", phd: false },
+        { name: "Trey Billings", affiliation: "ACLED", phd: false },
+        { name: "Selena Wang", affiliation: "Indiana University", phd: false },
+        { name: "Erin Lin", affiliation: "Ohio State University", phd: false },
+        { name: "Gino Pauselli", affiliation: "University of Illinois", phd: false },
+        { name: "Cecilia Cavero-S\u00e1nchez", affiliation: "Penn State", phd: true },
+        { name: "Jing Luo", affiliation: "Ohio State University", phd: true },
+        { name: "Chandler L'Hommedieu", affiliation: "Ohio State University", phd: true },
+        { name: "Anneliese Ward", affiliation: "Ohio State University", phd: true },
+        { name: "Pengfei Zhang", affiliation: "UT Dallas", phd: false },
+        { name: "Natalia Lamberova", affiliation: "UT Dallas", phd: false },
+        { name: "Anton Sobelev", affiliation: "UT Dallas", phd: false },
+        { name: "Cara Nix", affiliation: "Black Wealth Data Center", phd: false }
       ];
 
       function initials(name) {
@@ -135,14 +156,31 @@
       }
 
       const grid = document.getElementById("collab-grid");
-      collaborators.forEach(c => {
-        const card = document.createElement("div");
-        card.className = "collab-card";
-        card.innerHTML =
-          '<div class="collab-avatar">' + initials(c.name) + '</div>' +
-          '<p class="collab-name">' + c.name + '</p>' +
-          (c.affiliation ? '<p class="collab-affil">' + c.affiliation + '</p>' : '');
-        grid.appendChild(card);
+
+      function renderCards(filter) {
+        grid.innerHTML = "";
+        const filtered = filter === "all" ? collaborators
+          : filter === "phd" ? collaborators.filter(c => c.phd)
+          : collaborators.filter(c => !c.phd);
+        filtered.forEach(c => {
+          const card = document.createElement("div");
+          card.className = "collab-card";
+          card.innerHTML =
+            '<div class="collab-avatar">' + initials(c.name) + '</div>' +
+            '<p class="collab-name">' + c.name + '</p>' +
+            (c.affiliation ? '<p class="collab-affil">' + c.affiliation + '</p>' : '');
+          grid.appendChild(card);
+        });
+      }
+
+      renderCards("all");
+
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderCards(btn.dataset.filter);
+        });
       });
     </script>
   </body>
