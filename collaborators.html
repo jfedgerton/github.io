@@ -16,9 +16,18 @@
     <style>
       .collab-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(5, 1fr);
         gap: 1rem;
         margin-top: 1.5rem;
+      }
+      @media (max-width: 1024px) {
+        .collab-grid { grid-template-columns: repeat(4, 1fr); }
+      }
+      @media (max-width: 900px) {
+        .collab-grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      @media (max-width: 640px) {
+        .collab-grid { grid-template-columns: repeat(2, 1fr); }
       }
       .collab-card {
         background: var(--card);
@@ -105,37 +114,30 @@
     <script>
       const collaborators = [
         { name: "Skyler J. Cranmer", affiliation: "Ohio State University" },
-        { name: "Hollie Nyseth Nzitatira", affiliation: "University of Dayton" },
-        { name: "Mael van Beek", affiliation: "Ohio State University" },
-        { name: "Dagmar Heintze", affiliation: "" },
+        { name: "Hollie Nyseth Nzitatira", affiliation: "Ohio State University" },
+        { name: "Mael van Beek", affiliation: "University of Georgia" },
+        { name: "Dagmar Heintze", affiliation: "UT Dallas" },
         { name: "Bear Braumoeller", affiliation: "Ohio State University" },
         { name: "Jon Green", affiliation: "Duke University" },
-        { name: "Gary Uzonyi", affiliation: "" },
-        { name: "Elizabeth Brannon", affiliation: "" },
+        { name: "Gary Uzonyi", affiliation: "University of Strathclyde" },
+        { name: "Elizabeth Brannon", affiliation: "Indiana University" },
         { name: "Jack Wippell", affiliation: "Ohio State University" },
-        { name: "Evelyn Gertz", affiliation: "" },
-        { name: "Haoming Xiong", affiliation: "" },
-        { name: "Daniel Naftel", affiliation: "" },
-        { name: "Trey Billings", affiliation: "" },
-        { name: "Laura C. Frizzell", affiliation: "" },
-        { name: "Victor Finomore", affiliation: "" },
-        { name: "Selena Wang", affiliation: "" },
-        { name: "Erin Lin", affiliation: "" },
-        { name: "Rongjun Qin", affiliation: "" },
-        { name: "Daren Kong", affiliation: "" },
-        { name: "Gerald G. Gaes", affiliation: "" },
-        { name: "Jeremy Luallen", affiliation: "" },
-        { name: "William Rhodes", affiliation: "" },
-        { name: "Dierdre Rabideau", affiliation: "" },
-        { name: "Gino Pauselli", affiliation: "" },
-        { name: "Cecilia Cavero-S\u00e1nchez", affiliation: "" },
-        { name: "Jing Lou", affiliation: "" },
-        { name: "Chandler L'Hommedieu", affiliation: "" },
-        { name: "Anneliese Ward", affiliation: "" },
+        { name: "Haoming Xiong", affiliation: "University of Nebraska" },
+        { name: "Daniel Naftel", affiliation: "Harvard University" },
+        { name: "Trey Billings", affiliation: "ACLED" },
+        { name: "Selena Wang", affiliation: "University of Illinois" },
+        { name: "Erin Lin", affiliation: "Ohio State University" },
+        { name: "Gino Pauselli", affiliation: "University of Illinois" },
+        { name: "Cecilia Cavero-S\u00e1nchez", affiliation: "Penn State" },
+        { name: "Jing Lou", affiliation: "Ohio State University" },
+        { name: "Anneliese Ward", affiliation: "University of Kentucky" },
         { name: "Pengfei Zhang", affiliation: "UT Dallas" },
         { name: "Natalia Lamberova", affiliation: "UT Dallas" },
         { name: "Anton Sobelev", affiliation: "UT Dallas" },
-        { name: "Cara Nix", affiliation: "Black Wealth Data Center" }
+        { name: "Cara Nix", affiliation: "Black Wealth Data Center" },
+        { name: "Lula Chen", affiliation: "MIT" },
+        { name: "Susanna Campbell", affiliation: "American University" },
+        { name: "Jessica Maves Braithwaite", affiliation: "University of Arizona" }
       ];
 
       function initials(name) {

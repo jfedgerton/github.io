@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="assets/styles.css" />
     <style>
       :root {
-        --close: #2f4f4f;
-        --development: #6b7c93;
-        --early: #9aa5b1;
+        --close: #86efac;
+        --development: #fb923c;
+        --early: #cbd5e1;
       }
 
       [data-theme="dark"] {
-        --close: #5eead4;
-        --development: #94a3b8;
-        --early: #64748b;
+        --close: #4ade80;
+        --development: #fb923c;
+        --early: #94a3b8;
       }
 
       .projects-container {
@@ -179,7 +179,7 @@
 - Rwanda Gacaca Sentencing (Criminology R&amp;R)
 - ISIS Foreign Fighter Mobilization
 - Polarization in American Media on Gun Violence
-- Foreign Policy Media Framing in Podcasts (Alternative vs Mainstream)
+- Elite Networks During War
 
 ### In Development
 - State–Rebel War Extension of the Relational Power Model
@@ -189,9 +189,11 @@
 - Tenet Media and Foreign Influence Networks
 - Estimating the Rate of Sexual Assault in Rwanda
 - Human Trafficking and Environmental Shock
+- Comedy Podcasts and Mainstream Media on Foreign Policy
+- War and the Network Structure of States
 
 ### Early Stages
-- Book Project: Diplomacy, Hierarchy, and Information Cascades
+- Book Project: Cycles of Conflict
 - KKK Historical Network Reconstruction (FBI Vault + COINTELPRO)
 - Lumen / Copyright Lawfare and Platform Governance
 - AI and Warfare
@@ -250,10 +252,10 @@
             "Measures divergence in media framing around gun violence and traces agenda feedback loops. Findings illuminate the structure of ideological information environments."
         },
         {
-          id: "Foreign Policy Media\nFraming in Podcasts\n(Alt vs Mainstream)",
+          id: "Elite Networks\nDuring War",
           stage: "Close to Submission",
           summary:
-            "Compares narrative construction in podcast ecosystems to identify differences in foreign policy framing. The project maps message diffusion across media communities."
+            "Examines how political and military elites form, leverage, and reconfigure relational ties during interstate and civil conflict. The project links elite network structure to wartime decision-making and coalition dynamics."
         },
         {
           id: "State–Rebel War\nExtension of the\nRelational Power Model",
@@ -298,10 +300,22 @@
             "Analyzes whether environmental disruption changes trafficking routes, vulnerability, and enforcement effectiveness. The project links ecological stress to institutional response capacity."
         },
         {
-          id: "Book Project:\nDiplomacy, Hierarchy\n& Info Cascades",
+          id: "Comedy Podcasts &\nMainstream Media\non Foreign Policy",
+          stage: "In Development",
+          summary:
+            "Compares how comedy podcasts and mainstream media outlets frame and discuss foreign policy issues. The project traces narrative differences, framing styles, and audience exposure across contrasting media ecosystems."
+        },
+        {
+          id: "War & Network\nStructure of States",
+          stage: "In Development",
+          summary:
+            "Investigates how interstate war reshapes the relational structure of the state system, altering alliance ties, trade links, and diplomatic position. The study quantifies network-level consequences of conflict over time."
+        },
+        {
+          id: "Book Project:\nCycles of Conflict",
           stage: "Early Stages",
           summary:
-            "Develops a broader theoretical account of diplomatic hierarchy and cascade dynamics in international politics. The book project integrates historical cases with relational inference."
+            "Develops a broader theoretical account of recurring cycles of conflict across historical and contemporary cases. The book integrates relational measurement with long-run dynamics of escalation, de-escalation, and recurrence."
         },
         {
           id: "KKK Historical Network\nReconstruction\n(FBI Vault + COINTELPRO)",
@@ -323,25 +337,32 @@
         }
       ];
 
-      /* Curated edgelist – 21 edges based on substantive overlap */
+      /* Curated edgelist based on substantive overlap */
       const links = [
         { source: "Strategic Rebel Targeting\n(PSRM – Conditional Accept)", target: "State–Rebel War\nExtension of the\nRelational Power Model" },
         { source: "Strategic Rebel Targeting\n(PSRM – Conditional Accept)", target: "Agent-Based Model\nof Rebel Conflict\nDynamics" },
         { source: "Interstate War as\nRelational–Material\nJoint Decision", target: "State–Rebel War\nExtension of the\nRelational Power Model" },
-        { source: "Interstate War as\nRelational–Material\nJoint Decision", target: "Book Project:\nDiplomacy, Hierarchy\n& Info Cascades" },
+        { source: "Interstate War as\nRelational–Material\nJoint Decision", target: "Book Project:\nCycles of Conflict" },
         { source: "Interstate War as\nRelational–Material\nJoint Decision", target: "AI and Warfare" },
+        { source: "Interstate War as\nRelational–Material\nJoint Decision", target: "Elite Networks\nDuring War" },
+        { source: "Interstate War as\nRelational–Material\nJoint Decision", target: "War & Network\nStructure of States" },
+        { source: "Elite Networks\nDuring War", target: "Book Project:\nCycles of Conflict" },
+        { source: "Elite Networks\nDuring War", target: "War & Network\nStructure of States" },
+        { source: "War & Network\nStructure of States", target: "Dynamic Multiplex GNN\nForecasting of US–China\nEmbeddedness" },
+        { source: "War & Network\nStructure of States", target: "State–Rebel War\nExtension of the\nRelational Power Model" },
+        { source: "War & Network\nStructure of States", target: "Book Project:\nCycles of Conflict" },
         { source: "Tariff Waivers &\nSupplier Network\nReconfiguration", target: "Dynamic Multiplex GNN\nForecasting of US–China\nEmbeddedness" },
         { source: "Tariff Waivers &\nSupplier Network\nReconfiguration", target: "USAID Ecosystem of Aid\n& Network Fragmentation" },
         { source: "USAID Ecosystem of Aid\n& Network Fragmentation", target: "Human Trafficking &\nEnvironmental Shock" },
         { source: "Rwanda Gacaca\nSentencing\n(Criminology R&R)", target: "Estimating Sexual\nAssault Rate\nin Rwanda" },
         { source: "ISIS Foreign Fighter\nMobilization", target: "Agent-Based Model\nof Rebel Conflict\nDynamics" },
         { source: "ISIS Foreign Fighter\nMobilization", target: "KKK Historical Network\nReconstruction\n(FBI Vault + COINTELPRO)" },
-        { source: "Polarization in\nAmerican Media\non Gun Violence", target: "Foreign Policy Media\nFraming in Podcasts\n(Alt vs Mainstream)" },
+        { source: "Polarization in\nAmerican Media\non Gun Violence", target: "Comedy Podcasts &\nMainstream Media\non Foreign Policy" },
         { source: "Polarization in\nAmerican Media\non Gun Violence", target: "Tenet Media &\nForeign Influence\nNetworks" },
-        { source: "Foreign Policy Media\nFraming in Podcasts\n(Alt vs Mainstream)", target: "Tenet Media &\nForeign Influence\nNetworks" },
+        { source: "Comedy Podcasts &\nMainstream Media\non Foreign Policy", target: "Tenet Media &\nForeign Influence\nNetworks" },
         { source: "Dynamic Multiplex GNN\nForecasting of US–China\nEmbeddedness", target: "Temporal Community\nDetection Generalization\n(Louvain/Leiden)" },
         { source: "Tenet Media &\nForeign Influence\nNetworks", target: "Lumen / Copyright\nLawfare & Platform\nGovernance" },
-        { source: "Book Project:\nDiplomacy, Hierarchy\n& Info Cascades", target: "AI and Warfare" },
+        { source: "Book Project:\nCycles of Conflict", target: "AI and Warfare" },
         { source: "KKK Historical Network\nReconstruction\n(FBI Vault + COINTELPRO)", target: "Temporal Community\nDetection Generalization\n(Louvain/Leiden)" },
         { source: "Lumen / Copyright\nLawfare & Platform\nGovernance", target: "Polarization in\nAmerican Media\non Gun Violence" },
         { source: "Human Trafficking &\nEnvironmental Shock", target: "Estimating Sexual\nAssault Rate\nin Rwanda" },
