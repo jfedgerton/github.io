@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collaborators | Jared Edgerton</title>
+    <meta
+      name="description"
+      content="Research collaborators and coauthors of Jared Edgerton across political science, network analysis, and computational social science."
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JE</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      .collab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .collab-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 0.9rem;
+        padding: 1rem 1.1rem;
+        text-align: center;
+        box-shadow: 0 10px 24px -24px rgba(2, 6, 23, 0.45);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+      .collab-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px -20px rgba(2, 6, 23, 0.5);
+      }
+      .collab-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+      }
+      .collab-name {
+        font-weight: 600;
+        color: var(--text);
+        font-size: 0.95rem;
+        margin: 0;
+      }
+      .collab-affil {
+        color: var(--muted);
+        font-size: 0.82rem;
+        margin: 0.2rem 0 0;
+      }
+      .collab-section { margin-top: 2rem; }
+      .collab-section h2 { border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="site-title" href="index.html">Jared Edgerton</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a class="active" href="collaborators.html">Collaborators</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode"></button>
+      </div>
+    </header>
+    <main class="container">
+      <h1>Collaborators</h1>
+      <p>
+        I am fortunate to work with outstanding scholars across political science, sociology, criminology,
+        computer science, and data science. Below are the individuals I have collaborated with on published
+        and ongoing research.
+      </p>
+
+      <div class="collab-grid" id="collab-grid"></div>
+
+      <section class="collab-section">
+        <h2>Work With Me</h2>
+        <p>
+          Beyond academic collaboration, I am available for consulting engagements and media commentary on
+          topics including political violence, international security, network analysis, AI and conflict,
+          computational social science, and data-driven policy analysis. If you are a journalist, policy
+          organization, or industry team looking for expert insight, please
+          <a href="contact.html">get in touch</a>.
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="container"><p>&copy; <span id="year"></span> Jared Edgerton</p></div></footer>
+    <script src="assets/site.js"></script>
+    <script>
+      const collaborators = [
+        { name: "Skyler J. Cranmer", affiliation: "Ohio State University" },
+        { name: "Hollie Nyseth Nzitatira", affiliation: "University of Dayton" },
+        { name: "Mael van Beek", affiliation: "Ohio State University" },
+        { name: "Dagmar Heintze", affiliation: "" },
+        { name: "Bear Braumoeller", affiliation: "Ohio State University" },
+        { name: "Jon Green", affiliation: "Duke University" },
+        { name: "Gary Uzonyi", affiliation: "" },
+        { name: "Elizabeth Brannon", affiliation: "" },
+        { name: "Jack Wippell", affiliation: "Ohio State University" },
+        { name: "Evelyn Gertz", affiliation: "" },
+        { name: "Haoming Xiong", affiliation: "" },
+        { name: "Daniel Naftel", affiliation: "" },
+        { name: "Trey Billings", affiliation: "" },
+        { name: "Laura C. Frizzell", affiliation: "" },
+        { name: "Victor Finomore", affiliation: "" },
+        { name: "Selena Wang", affiliation: "" },
+        { name: "Erin Lin", affiliation: "" },
+        { name: "Rongjun Qin", affiliation: "" },
+        { name: "Daren Kong", affiliation: "" },
+        { name: "Gerald G. Gaes", affiliation: "" },
+        { name: "Jeremy Luallen", affiliation: "" },
+        { name: "William Rhodes", affiliation: "" },
+        { name: "Dierdre Rabideau", affiliation: "" },
+        { name: "Gino Pauselli", affiliation: "" },
+        { name: "Cecilia Cavero-S\u00e1nchez", affiliation: "" },
+        { name: "Jing Lou", affiliation: "" },
+        { name: "Chandler L'Hommedieu", affiliation: "" },
+        { name: "Anneliese Ward", affiliation: "" },
+        { name: "Pengfei Zhang", affiliation: "UT Dallas" },
+        { name: "Natalia Lamberova", affiliation: "UT Dallas" },
+        { name: "Anton Sobelev", affiliation: "UT Dallas" },
+        { name: "Cara Nix", affiliation: "Black Wealth Data Center" }
+      ];
+
+      function initials(name) {
+        return name.split(" ").map(w => w[0]).join("").toUpperCase();
+      }
+
+      const grid = document.getElementById("collab-grid");
+      collaborators.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "collab-card";
+        card.innerHTML =
+          '<div class="collab-avatar">' + initials(c.name) + '</div>' +
+          '<p class="collab-name">' + c.name + '</p>' +
+          (c.affiliation ? '<p class="collab-affil">' + c.affiliation + '</p>' : '');
+        grid.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

@@ -15,6 +15,17 @@
   --transition: 200ms ease;
 }
 
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --card: #1e293b;
+  --border: #334155;
+  --accent: #2dd4bf;
+  --accent-contrast: #0f172a;
+  --accent-soft: #134e4a;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -22,10 +33,10 @@
 body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: radial-gradient(circle at top, #eef6ff 0%, var(--bg) 35%, #f8fafc 100%);
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  transition: background 200ms ease, color 200ms ease;
 }
 
 .container {
@@ -43,6 +54,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(15, 23, 42, 0.88);
 }
 
 .nav-wrap {
@@ -105,12 +120,11 @@ body {
   color: var(--accent);
 }
 
-.nav-list a.active {
-  background: var(--accent);
-  color: var(--accent-contrast);
+[data-theme="dark"] .nav-list a:hover,
+[data-theme="dark"] .nav-list a.active {
+  background: #134e4a;
+  color: #5eead4;
 }
-
-/* ---- Main ---- */
 
 main {
   padding: 2.5rem 0 4rem;
@@ -128,21 +142,49 @@ main {
   }
 }
 
-/* ---- Typography ---- */
-
-h1 {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-top: 0;
+[data-theme="dark"] .hero {
+  background: linear-gradient(155deg, #1e293b 0%, #134e4a 100%);
+  box-shadow: 0 14px 35px -28px rgba(0, 0, 0, 0.6);
 }
 
-h2 {
-  font-size: 1.35rem;
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.headshot {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--border);
+}
+
+.hero-text {
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .headshot {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.kicker {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
+  color: var(--accent);
+  margin: 0;
 }
 
 h3 {
@@ -231,12 +273,10 @@ p {
   box-shadow: none;
 }
 
-.button.secondary:hover {
-  background: #cbd5e1;
-  transform: translateY(-1px);
+[data-theme="dark"] .button.secondary {
+  background: #334155;
+  color: #e2e8f0;
 }
-
-/* ---- Cards ---- */
 
 .card-grid {
   display: grid;
@@ -268,12 +308,6 @@ p {
   margin-bottom: 0;
 }
 
-.project-card {
-  border-top: 4px solid var(--accent);
-}
-
-/* ---- Lists ---- */
-
 .list-clean {
   padding-left: 1.1rem;
   line-height: 1.8;
@@ -283,79 +317,29 @@ p {
   margin-bottom: 0.3rem;
 }
 
-.compact li {
-  margin-bottom: 0.35rem;
-}
-
-/* ---- Page intro pattern (used on inner pages) ---- */
-
-.page-intro {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.page-intro h1 {
-  margin-bottom: 0.5rem;
-}
-
-.page-intro p {
-  margin-top: 0;
-  font-size: 1.05rem;
-}
-
-/* ---- Contact list ---- */
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
-}
-
-.contact-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.contact-item strong {
-  display: block;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  margin-bottom: 0.35rem;
-}
-
-/* ---- CV page ---- */
-
-.cv-section {
-  text-align: center;
-  padding: 3rem 1rem;
-}
-
-.cv-section p {
-  margin-inline: auto;
-}
-
-/* ---- Footer ---- */
-
 .site-footer {
   border-top: 1px solid var(--border);
-  background: #ffffff;
-  padding: 1.25rem 0;
+  background: var(--card);
+  padding: 1rem 0;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.site-footer p {
-  margin: 0;
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: all 160ms ease;
 }
 
-/* ---- Responsive ---- */
+.theme-toggle:hover {
+  background: var(--accent-soft);
+}
 
 @media (max-width: 720px) {
   .menu-toggle {

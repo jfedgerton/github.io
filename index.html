@@ -8,6 +8,10 @@
       name="description"
       content="Personal academic website of Jared Edgerton, a methodologist at Penn State working on political science and data science."
     />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JE</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -22,30 +26,37 @@
             <li><a class="active" href="index.html">Home</a></li>
             <li><a href="research.html">Research</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="collaborators.html">Collaborators</a></li>
             <li><a href="teaching.html">Teaching</a></li>
             <li><a href="cv.html">CV</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode"></button>
       </div>
     </header>
 
     <main class="container">
       <section class="hero">
-        <p class="kicker">Computational Political Science &bull; Penn State</p>
-        <h1>Methodologist studying conflict, security, and political behavior through data.</h1>
-        <p>
-          I build research pipelines that connect machine learning, network science, and text analysis to high-stakes
-          political questions. My work emphasizes transparent measurement, reproducible workflows, and interdisciplinary
-          collaboration.
-        </p>
-        <p>
-          Across projects, I examine conflict dynamics, information environments, and institutions that shape violence,
-          governance, and collective behavior.
-        </p>
-        <div class="hero-actions">
-          <a class="button" href="projects.html">Explore Projects</a>
-          <a class="button secondary" href="research.html">Read Research Areas</a>
+        <div class="hero-inner">
+          <img src="assets/headshot.png" alt="Jared Edgerton" class="headshot" />
+          <div class="hero-text">
+            <p class="kicker">Assistant Professor • Penn State Political Science &amp; ICDS</p>
+            <h1>Methodologist studying conflict, security, and political behavior through data.</h1>
+            <p>
+              I build research pipelines that connect machine learning, network analysis, natural language processing,
+              and computer vision to high-stakes political questions. My work spans international security, political
+              violence, conflict processes, and complex systems.
+            </p>
+            <p>
+              Previously at the University of Texas at Dallas and Stanford's Human Trafficking Data Lab. Ph.D. from
+              The Ohio State University.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="projects.html">Explore Projects</a>
+              <a class="button secondary" href="research.html">Read Research Areas</a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -67,6 +78,14 @@
           <article class="card">
             <h3>Media & Information Systems</h3>
             <p>Information competition, digital discourse, and media effects in domestic and international politics.</p>
+          </article>
+          <article class="card">
+            <h3>Governance & Institutions</h3>
+            <p>Regime dynamics, institutional design, and the conditions that sustain or erode democratic resilience.</p>
+          </article>
+          <article class="card">
+            <h3>Foreign Policy Analysis</h3>
+            <p>Elite decision-making, alliance formation, and crisis diplomacy in an era of great-power competition.</p>
           </article>
         </div>
       </section>
