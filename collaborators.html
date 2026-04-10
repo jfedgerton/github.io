@@ -16,9 +16,12 @@
     <style>
       .collab-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 1rem;
         margin-top: 1.5rem;
+      }
+      @media (max-width: 1024px) {
+        .collab-grid { grid-template-columns: repeat(4, 1fr); }
       }
       @media (max-width: 900px) {
         .collab-grid { grid-template-columns: repeat(3, 1fr); }
@@ -127,7 +130,6 @@
         { name: "Gino Pauselli", affiliation: "University of Illinois" },
         { name: "Cecilia Cavero-S\u00e1nchez", affiliation: "Penn State" },
         { name: "Jing Lou", affiliation: "Ohio State University" },
-        { name: "Chandler L'Hommedieu", affiliation: "Ohio State University" },
         { name: "Anneliese Ward", affiliation: "" },
         { name: "Pengfei Zhang", affiliation: "UT Dallas" },
         { name: "Natalia Lamberova", affiliation: "UT Dallas" },
